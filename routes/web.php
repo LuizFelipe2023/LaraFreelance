@@ -7,6 +7,7 @@ use App\Http\Controllers\TrabalhoController;
 use App\Http\Controllers\CandidaturaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FavoritoController;
+use App\Http\Controllers\MensagemController;
 
 
 
@@ -68,6 +69,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 Route::post('/favorito/toggle', [FavoritoController::class, 'toggle'])->name('favorito.toggle');
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/mensagens', [MensagemController::class, 'store'])->name('mensagens.store');
+});
 
 
 require __DIR__ . '/auth.php';

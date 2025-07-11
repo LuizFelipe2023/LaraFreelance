@@ -34,4 +34,15 @@ class Candidatura extends Model
     {
         return $this->belongsTo(Trabalho::class);
     }
+
+    public function mensagens()
+    {
+        return $this->hasMany(Mensagem::class);
+    }
+
+    public function favoritadoPor()
+    {
+        return $this->belongsToMany(User::class, 'favoritos')->withTimestamps();
+    }
+
 }

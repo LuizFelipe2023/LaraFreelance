@@ -21,9 +21,13 @@ class Trabalho extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // // Relação com candidaturas recebidas
-    // public function candidaturas()
-    // {
-    //     return $this->hasMany(Candidatura::class);
-    // }
+    public function candidaturas()
+    {
+        return $this->hasMany(Candidatura::class);
+    }
+
+    public function favoritadoPor()
+    {
+        return $this->belongsToMany(User::class, 'favoritos')->withTimestamps();
+    }
 }

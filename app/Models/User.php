@@ -49,6 +49,17 @@ class User extends Authenticatable
 
     public function tipoUsuario()
     {
-           return $this->belongsTo(UsuarioTipo::class,'tipo_usuario');
+        return $this->belongsTo(UsuarioTipo::class, 'tipo_usuario');
     }
+
+    public function mensagens()
+    {
+        return $this->hasMany(Mensagem::class);
+    }
+
+    public function favoritos()
+    {
+        return $this->belongsToMany(Trabalho::class, 'favoritos')->withTimestamps();
+    }
+
 }
