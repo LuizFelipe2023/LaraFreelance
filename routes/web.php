@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrabalhoController;
 use App\Http\Controllers\CandidaturaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FavoritoController;
+
 
 
 
@@ -63,6 +65,8 @@ Route::middleware(['auth'])->prefix('candidaturas')->name('candidaturas.')->grou
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+Route::post('/favorito/toggle', [FavoritoController::class, 'toggle'])->name('favorito.toggle');
 
 
 

@@ -6,6 +6,7 @@ use App\Http\Requests\CandidaturaRequest;
 use App\Http\Requests\UpdateCandidaturaRequest;
 use App\Models\Candidatura;
 use App\Services\CandidaturaService;
+use App\Services\FavoritoService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,11 +15,12 @@ use Illuminate\Support\Facades\Log;
 
 class CandidaturaController extends Controller
 {
-    protected $candidaturaService;
+    protected $candidaturaService, $favoritoService;
 
-    public function __construct(CandidaturaService $candidaturaService)
+    public function __construct(CandidaturaService $candidaturaService, FavoritoService $favoritoService)
     {
         $this->candidaturaService = $candidaturaService;
+        $this->favoritoService = $favoritoService;
     }
 
     public function index(): View
@@ -35,7 +37,7 @@ class CandidaturaController extends Controller
     public function store(CandidaturaRequest $request, int $trabalhoId): RedirectResponse
     {
         $data = $request->validated();
-        
+
         $data['trabalho_id'] = $trabalhoId;
 
         if ($request->hasFile('anexo')) {
@@ -60,7 +62,10 @@ class CandidaturaController extends Controller
     public function show(int $id): View
     {
         $candidatura = $this->candidaturaService->getCandidaturaById($id);
-        return view('candidaturas.show', compact('candidatura'));
+        $isFavoritado = $this->favoritoService->isFavorito([
+            'candidatura_id' => $candidatura->id,
+        ]);
+        return view('candidaturas.show', compact('candidatura', 'isFavoritado'));
     }
 
     public function edit(int $id): View
@@ -69,7 +74,7 @@ class CandidaturaController extends Controller
         return view('candidaturas.edit', compact('candidatura'));
     }
 
-    public function update(UpdateCandidaturaRequest $request , int $id): RedirectResponse
+    public function update(UpdateCandidaturaRequest $request, int $id): RedirectResponse
     {
         $data = $request->validated();
 
