@@ -158,7 +158,7 @@
                                         @foreach($candidatura->mensagens as $mensagem)
                                             <div class="list-group-item list-group-item-action mb-3 shadow-sm border-0 rounded-3">
                                                 <h6 class="fw-bold text-dark mb-1">{{ $mensagem->titulo }}</h6>
-                                                <p class="text-muted small mb-2">{{ $mensagem->corpo }}</p>
+                                                <p class="text-muted small mb-2">{!!$mensagem->corpo!!}</p>
                                                 <small class="text-muted"><i
                                                         class="bi bi-clock me-1"></i>{{ $mensagem->created_at->format('d/m/Y H:i') }}</small>
                                             </div>

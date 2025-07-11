@@ -78,7 +78,7 @@
                     <i class="bi bi-arrow-left me-1"></i> Voltar para vagas
                 </a>
 
-                <button class="btn btn-primary rounded-3 px-4 favorito-btn" 
+                <button class="btn btn-success rounded-pill px-4 favorito-btn" 
                         data-trabalho-id="{{ $trabalho->id }}" 
                         data-favoritado="{{ $trabalhoFavoritado ? '1' : '0' }}">
                     <i class="bi {{ $trabalhoFavoritado ? 'bi-star-fill' : 'bi-star' }}"></i>
