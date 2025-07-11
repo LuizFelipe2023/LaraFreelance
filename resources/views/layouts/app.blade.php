@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    @stack('styles')
 </head>
 
 <body>
@@ -75,7 +74,7 @@
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-form').submit();">
                                         <i class="bi bi-box-arrow-right me-2"></i> {{ __('Sair') }}
                                     </a>
 
@@ -97,43 +96,43 @@
             </div>
         </main>
 
-        <footer class="bg-white py-3 border-top fixed-bottom">
+        <footer class="bg-white border-top shadow-sm py-3 fixed-bottom">
             <div class="container">
-                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                    <div class="mb-2 mb-md-0">
-                        <span class="text-muted small">© {{ now()->year }} LaraFreelance. Todos os direitos
-                            reservados.</span>
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+    
+                    <div class="text-muted small text-center text-md-start">
+                        © {{ now()->year }} <strong>LaraFreelance</strong>. Todos os direitos reservados.
                     </div>
 
-                    <div class="social-icons">
-                        <a class="btn btn-sm btn-outline-secondary m-1" href="#" title="Facebook">
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#" class="social-link facebook" title="Facebook">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a class="btn btn-sm btn-outline-secondary m-1" href="#" title="Twitter">
+                        <a href="#" class="social-link twitter" title="Twitter">
                             <i class="bi bi-twitter"></i>
                         </a>
-                        <a class="btn btn-sm btn-outline-secondary m-1" href="#" title="Instagram">
+                        <a href="#" class="social-link instagram" title="Instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a class="btn btn-sm btn-outline-secondary m-1" href="#" title="LinkedIn">
+                        <a href="#" class="social-link linkedin" title="LinkedIn">
                             <i class="bi bi-linkedin"></i>
                         </a>
-                        <a class="btn btn-sm btn-outline-secondary m-1" href="#" title="GitHub">
+                        <a href="#" class="social-link github" title="GitHub">
                             <i class="bi bi-github"></i>
                         </a>
                     </div>
 
-                    <div class="mt-2 mt-md-0">
-                        <a href="https://getbootstrap.com/docs/5.3/icons/" class="text-muted small" target="_blank">
-                            <i class="bi bi-box-seam me-1"></i> Bootstrap Icons
+                    <div class="text-muted small text-center text-md-end">
+                        <a href="https://getbootstrap.com/docs/5.3/icons/" class="text-muted text-decoration-none"
+                            target="_blank">
+                            <i class="bi bi-box-seam me-1"></i>Bootstrap Icons
                         </a>
                     </div>
                 </div>
             </div>
         </footer>
-    </div>
 
-    @stack('scripts')
+        
 </body>
 
 </html>

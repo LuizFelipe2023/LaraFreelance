@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrabalhoController;
 use App\Http\Controllers\CandidaturaController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -60,6 +61,9 @@ Route::middleware(['auth'])->prefix('candidaturas')->name('candidaturas.')->grou
     Route::put('/{id}', [CandidaturaController::class, 'update'])->name('update');
     Route::delete('/{id}', [CandidaturaController::class, 'destroy'])->name('destroy');
 });
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
 
 
 require __DIR__ . '/auth.php';

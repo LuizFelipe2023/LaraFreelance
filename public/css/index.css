@@ -162,6 +162,7 @@ footer {
 .dropdown-toggle::after {
     display: none;
 }
+
 .table thead th {
     background-color: #f3f6f9;
     font-weight: 600;
@@ -173,11 +174,14 @@ footer {
     vertical-align: middle;
 }
 
-.table-striped > tbody > tr:nth-of-type(odd) {
+.table-striped>tbody>tr:nth-of-type(odd) {
     background-color: #f8f9fa;
 }
 
-.btn-outline-primary, .btn-info, .btn-warning, .btn-danger {
+.btn-outline-primary,
+.btn-info,
+.btn-warning,
+.btn-danger {
     border-radius: 20px;
     padding: 4px 12px;
     font-size: 0.875rem;
@@ -195,4 +199,29 @@ footer {
 h2 {
     font-weight: 700;
     font-size: 1.4rem;
+}
+
+.social-link {
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.social-link.facebook:hover {
+    color: #1877f2;
+}
+
+.social-link.twitter:hover {
+    color: #1da1f2;
+}
+
+.social-link.instagram:hover {
+    color: #e1306c;
+}
+
+.social-link.linkedin:hover {
+    color: #0077b5;
+}
+
+.social-link.github:hover {
+    color: #333;
 }
