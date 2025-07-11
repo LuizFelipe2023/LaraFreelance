@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TrabalhoRequest;
+use App\Services\FavoritoService;
 use App\Services\TrabalhoService;
 use Exception;
 use Illuminate\Http\RedirectResponse;
@@ -11,11 +12,12 @@ use Illuminate\Http\Request;
 
 class TrabalhoController extends Controller
 {
-    protected $trabalhoService;
+    protected $trabalhoService, $favoritoService;
 
-    public function __construct(TrabalhoService $trabalhoService)
+    public function __construct(TrabalhoService $trabalhoService,FavoritoService $favoritoService)
     {
         $this->trabalhoService = $trabalhoService;
+        $this->favoritoService = $favoritoService;
     }
 
     public function index(Request $request): View
@@ -31,7 +33,10 @@ class TrabalhoController extends Controller
     public function show(int $id): View
     {
         $trabalho = $this->trabalhoService->getById($id);
-        return view('trabalhos.show', compact('trabalho'));
+        $trabalhoFavoritado = $this->favoritoService->isFavorito([
+            'trabalho_id' => $trabalho->id,
+        ]);
+        return view('trabalhos.show', compact('trabalho','trabalhoFavoritado'));
     }
 
 

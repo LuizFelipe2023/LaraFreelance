@@ -77,6 +77,14 @@
                 <a href="{{ route('trabalhos.index') }}" class="btn btn-outline-secondary rounded-pill px-4">
                     <i class="bi bi-arrow-left me-1"></i> Voltar para vagas
                 </a>
+
+                <button class="btn btn-primary rounded-3 px-4 favorito-btn" 
+                        data-trabalho-id="{{ $trabalho->id }}" 
+                        data-favoritado="{{ $trabalhoFavoritado ? '1' : '0' }}">
+                    <i class="bi {{ $trabalhoFavoritado ? 'bi-star-fill' : 'bi-star' }}"></i>
+                    <span class="ms-1 favorito-text">{{ $trabalhoFavoritado ? 'Desfavoritar' : 'Favoritar' }}</span>
+                </button>
+
                 
                 @if($trabalho->status === 'aberto')
                 <a href="{{ route('candidaturas.create', ['trabalho' => $trabalho->id]) }}" 
@@ -92,4 +100,8 @@
         </div>
     </div>
 </div>
+<script>
+    const favoritoToggleUrl = "{{ route('favorito.toggle') }}";
+</script>
+<script src="{{ asset('js/favoritos/handleFavoritoTrabalho.js') }}"></script>
 @endsection
